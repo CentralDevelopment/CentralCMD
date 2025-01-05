@@ -2,8 +2,8 @@
 
 local FoundWhitelistedUser = {}
 local Whitelist = {
-    ["username"] = {
-        Tag = "tag",
+    ["table_2126311010"] = {
+        Tag = "Central Owner",
         Color = '#FF0202'
     }
 }
