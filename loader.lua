@@ -1,0 +1,52 @@
+-- // Central Command UI Library Example
+local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/CentralDevelopment/CentralCMD/refs/heads/main/source.lua', true))()
+
+local Window = Library:CreateWindow({
+    Name = 'Central Command UI Library',
+    IntroText = 'Central Command UI Library',
+    IntroIcon = '',
+    IntroBlur = true,
+    IntroBlurIntensity = 15,
+    Theme = Library.Themes.dark,
+    Position = 'bottom',
+    Draggable = true,
+    Prefix = ';'
+})
+
+-- // Commands
+Window:AddCommand('Print', {'String'}, 'Prints A String.', function(Arguments, Speaker)
+    print(Arguments[1])
+end)
+
+Window:AddCommand('SetPrefix', {'New Prefix'}, 'Changes The Prefix.', function(Arguments, Speaker)
+    Window:ChangePrefix(Arguments[1])
+end)
+
+Window:AddCommand('SetTheme', {'New Theme'}, 'Changes The Theme.', function(Arguments, Speaker)
+    Window:ChangeTheme(Arguments[1])
+end)
+
+Window:AddCommand('HelloWorld', {}, 'Prints \'Hello World\'.', function(Arguments, Speaker)
+    print('Hello World')
+end)
+
+Window:AddCommand('Notify', {}, 'Creates A Notification.', function(Arguments, Speaker)
+    Window:CreateNotification('Central Command UI Library', 'Notification', 5)
+end)
+
+-- // Functions
+Window:AddTheme('test', {
+    BackgroundColor = Color3.fromRGB(0, 255, 255),
+    SecondaryColor = Color3.fromRGB(225, 225, 225),
+    AccentColor = Color3.fromRGB(125, 125, 125),
+    PrimaryTextColor = Color3.fromRGB(0, 0, 0),
+    SecondaryTextColor = Color3.fromRGB(75, 75, 75)
+})
+
+for _, Theme in next, Window:GetThemes(true) do
+    print(Theme)
+end
+
+for Index, Theme in next, Window:GetThemes(false) do
+    print(Index, Theme)
+end
